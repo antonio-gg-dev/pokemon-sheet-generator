@@ -4,7 +4,10 @@ declare(strict_types=1);
 
 namespace PSG\SpeciesUpdater\Domain\Repositories;
 
+use PSG\SpeciesUpdater\Domain\Entities\Specie;
+
 interface RemoteSpeciesRepository
 {
-    public function fetchSpecies();
+    /** @return Specie[] */
+    public function fetchSpecies(): array;
 }

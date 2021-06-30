@@ -12,12 +12,11 @@ final class SpeciesUpdater
     public function __construct(
         private RemoteSpeciesRepository $remoteSpeciesRepository,
         private LocalSpeciesRepository $localSpeciesRepository
-
     ) {}
 
     public function updateSpecies(): void
     {
-        $this->remoteSpeciesRepository->fetchSpecies();
-        $this->localSpeciesRepository->storeSpecies();
+        $species = $this->remoteSpeciesRepository->fetchSpecies();
+        $this->localSpeciesRepository->storeSpecies($species);
     }
 }

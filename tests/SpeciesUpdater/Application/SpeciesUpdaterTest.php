@@ -7,6 +7,7 @@ namespace Tests\SpeciesUpdater\Application;
 use PHPUnit\Framework\MockObject\MockObject;
 use PSG\SpeciesUpdater\Application\SpeciesUpdater;
 use PHPUnit\Framework\TestCase;
+use PSG\SpeciesUpdater\Domain\Entities\Specie;
 use PSG\SpeciesUpdater\Domain\Repositories\LocalSpeciesRepository;
 use PSG\SpeciesUpdater\Domain\Repositories\RemoteSpeciesRepository;
 
@@ -43,6 +44,24 @@ final class SpeciesUpdaterTest extends TestCase
     {
         $this->localSpeciesRepository->expects($this->once())
             ->method('storeSpecies');
+
+        $this->speciesUpdater->updateSpecies();
+    }
+
+    public function test_remote_species_are_sent_to_local(): void
+    {
+        $species = [
+            new Specie(),
+            new Specie(),
+            new Specie(),
+        ];
+        $this->remoteSpeciesRepository->expects($this->once())
+            ->method('fetchSpecies')
+            ->willReturn($species);
+
+        $this->localSpeciesRepository->expects($this->once())
+            ->method('storeSpecies')
+            ->with($species);
 
         $this->speciesUpdater->updateSpecies();
     }
