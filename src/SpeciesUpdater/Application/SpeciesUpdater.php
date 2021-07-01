@@ -12,7 +12,8 @@ final class SpeciesUpdater
     public function __construct(
         private RemoteSpeciesRepository $remoteSpeciesRepository,
         private LocalSpeciesRepository $localSpeciesRepository
-    ) {}
+    ) {
+    }
 
     public function updateSpecies(): void
     {

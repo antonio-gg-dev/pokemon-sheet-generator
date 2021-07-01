@@ -16,7 +16,8 @@
         "php": "^8.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "^9.0"
+        "phpunit/phpunit": "^9.0",
+        "friendsofphp/php-cs-fixer": "^3.0"
     },
     "autoload": {
         "psr-4": {
@@ -27,5 +28,10 @@
         "psr-4": {
             "Tests\\": "tests"
         }
+    },
+    "scripts": {
+        "cs:fix": "./vendor/bin/php-cs-fixer fix",
+        "cs:run": "./vendor/bin/php-cs-fixer fix -v --allow-risky=yes --dry-run --show-progress=none",
+        "test": "./vendor/bin/phpunit"
     }
 }
