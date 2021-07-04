@@ -10,6 +10,7 @@ use PHPUnit\Framework\TestCase;
 use PSG\SpeciesUpdater\Domain\Entities\Specie;
 use PSG\SpeciesUpdater\Domain\Repositories\LocalSpeciesRepository;
 use PSG\SpeciesUpdater\Domain\Repositories\RemoteSpeciesRepository;
+use PSG\SpeciesUpdater\Domain\ValueObjects\Type;
 
 final class SpeciesUpdaterUnitTest extends TestCase
 {
@@ -51,9 +52,9 @@ final class SpeciesUpdaterUnitTest extends TestCase
     public function test_remote_species_are_sent_to_local(): void
     {
         $species = [
-            new Specie(),
-            new Specie(),
-            new Specie(),
+            self::makeSpecie(name: 'First Specie Name'),
+            self::makeSpecie(name: 'Second Specie Name'),
+            self::makeSpecie(name: 'Third Specie Name'),
         ];
         $this->remoteSpeciesRepository->expects($this->once())
             ->method('fetchSpecies')
@@ -64,5 +65,15 @@ final class SpeciesUpdaterUnitTest extends TestCase
             ->with($species);
 
         $this->speciesUpdater->updateSpecies();
+    }
+
+    private static function makeSpecie(string $name): Specie
+    {
+        return new Specie(
+            $name,
+            1,
+            new Type(Type::BUG_TYPE),
+            null
+        );
     }
 }
