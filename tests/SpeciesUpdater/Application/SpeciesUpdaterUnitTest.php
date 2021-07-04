@@ -11,7 +11,7 @@ use PSG\SpeciesUpdater\Domain\Entities\Specie;
 use PSG\SpeciesUpdater\Domain\Repositories\LocalSpeciesRepository;
 use PSG\SpeciesUpdater\Domain\Repositories\RemoteSpeciesRepository;
 
-final class SpeciesUpdaterTest extends TestCase
+final class SpeciesUpdaterUnitTest extends TestCase
 {
     /** @var mixed|MockObject|RemoteSpeciesRepository */
     private mixed $remoteSpeciesRepository;

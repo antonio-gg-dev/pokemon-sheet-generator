@@ -32,6 +32,9 @@
     "scripts": {
         "cs:fix": "./vendor/bin/php-cs-fixer fix",
         "cs:run": "./vendor/bin/php-cs-fixer fix -v --allow-risky=yes --dry-run --show-progress=none",
-        "test": "./vendor/bin/phpunit"
+        "test:all": "./vendor/bin/phpunit --testsuite=All",
+        "test:unit": "./vendor/bin/phpunit --testsuite=Unit",
+        "test:integration": "./vendor/bin/phpunit --testsuite=Integration",
+        "test:external": "./vendor/bin/phpunit --testsuite=External"
     }
 }

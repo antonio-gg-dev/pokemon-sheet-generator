@@ -23,4 +23,3 @@ return (new Config())
         'psr_autoloading' => true,
         'void_return' => true,
     ]);
-
